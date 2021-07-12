@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { dataReducer } from "./reducer";
+import counterSlice from "./reducer";
 export default configureStore({
   reducer: {
-    data: dataReducer
+    data: counterSlice
   }
 });

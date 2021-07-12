@@ -20,9 +20,7 @@ function App() {
   });
 
   const onPassedStudent = async (user) => {
-    setUserData(prev => {
-      return { ...prev, selectedUser: user }
-    });
+    setUserData({ ...userData, selectedUser: user })
     await fetchUserPosts(user.id);
   };
 
@@ -32,9 +30,6 @@ function App() {
       .then(posts => {
         let _posts = posts.filter(post => post.userId === userId);
         dispatch(savePosts(_posts))
-        // setUserData(prev => {
-        //   return { ...prev, userPosts: _posts }
-        // });
         fetchUserAlbums(userId);
       }).catch(err => console.log(err));
   }
@@ -45,9 +40,6 @@ function App() {
       .then(albums => {
         let _albums = albums.filter(album => album.userId === userId);
         dispatch(saveAlbums(_albums));
-        // setUserData(prev => {
-        //   return { ...prev, userAlbums: _albums }
-        // });
         fetchUserTodos(userId);
       }).catch(err => console.log(err));
   }
@@ -58,9 +50,6 @@ function App() {
       .then(todos => {
         let _todos = todos.filter(todo => todo.userId === userId);
         dispatch(saveTodos(_todos));
-        // setUserData(prev => {
-        //   return { ...prev, userTodos: _todos }
-        // });
       }).catch(err => console.log(err));
   }
 
