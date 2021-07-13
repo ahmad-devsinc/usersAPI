@@ -4,9 +4,12 @@ import UserContext from '../../Contexts/userContext';
 import REST_URL from "../../shared/restUrl"
 import './Users.css';
 import Sidebar from '../Sidebar/Sidebar';
+import { useHistory } from "react-router";
 
 const Users = (props) => {
+    const history = useHistory();
     const [users, setUsers] = useState([]);
+
     useEffect(() => {
         fetch(`${REST_URL}/users`)
             .then(response => response.json())
@@ -21,9 +24,14 @@ const Users = (props) => {
         props.passStudent(userEvent);
     }
 
+    const onHandleLogout = (event) => {
+        props.handleLogout(event);
+        history.push("/");
+    }
+
     return (
         <div className="data-wrapper">
-            <button className="logout-btn" onClick={props.handleLogout}>Logout</button>
+            <button className="logout-btn" onClick={e => onHandleLogout(e)}>Logout</button>
 
             <div className="Users">
                 {users.map(user => {
