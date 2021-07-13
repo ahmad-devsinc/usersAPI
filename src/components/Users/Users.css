@@ -1,8 +1,25 @@
 .Users {
-    display: flex;
-    flex-direction: row;
+    float: left;
+    width: calc(100% - 400px);
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.Users, .sidebar {
+    display: inline-block;
     align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    row-gap: 50px;
+}
+  
+.sidebar {
+    float: right;
+    width: 400px;
+}
+
+.logout-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10p;
+    top: 5px;
 }

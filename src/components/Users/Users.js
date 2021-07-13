@@ -3,6 +3,7 @@ import User from './User/User';
 import UserContext from '../../Contexts/userContext';
 import REST_URL from "../../shared/restUrl"
 import './Users.css';
+import Sidebar from '../Sidebar/Sidebar';
 
 const Users = (props) => {
     const [users, setUsers] = useState([]);
@@ -16,18 +17,27 @@ const Users = (props) => {
         }
     }, []);
 
-    const onSelectUser = (userEvent) =>{
+    const onSelectUser = (userEvent) => {
         props.passStudent(userEvent);
     }
+
     return (
-        <div className="Users">
-            {users.map(user => {
-                return (
-                    <UserContext.Provider key={user.id} value={user}>
-                        <User selectedUser={onSelectUser} />
-                    </UserContext.Provider>
-                )
-            })}
+        <div className="data-wrapper">
+            <button className="logout-btn" onClick={props.handleLogout}>Logout</button>
+
+            <div className="Users">
+                {users.map(user => {
+                    return (
+                        <UserContext.Provider key={user.id} value={user}>
+                            <User selectedUser={onSelectUser} />
+                        </UserContext.Provider>
+                    )
+                })}
+            </div>
+
+            <div className="sidebar">
+                <Sidebar />
+            </div>
         </div>
     );
 }

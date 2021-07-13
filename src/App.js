@@ -1,16 +1,30 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Users from './components/Users/Users';
-import Sidebar from './components/Sidebar/Sidebar';
-import DataContext from './Contexts/dataContext';
 import './App.css';
 import REST_URL from './shared/restUrl';
-
+import Landing from './components/Landing/Landing';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 /* Redux imports */
 import { useDispatch } from "react-redux";
 import { savePosts, saveAlbums, saveTodos } from './redux/reducer';
+import Unauthorized from './components/Unauthorized/Unauthorized';
+
 function App() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      setUserData({
+        selectedUser: {},
+        userTodos: [],
+        userAlbums: [],
+        userPosts: []
+      })
+    }
+  }, [])
+
+  const [authorization, setAuthorization] = useState(false);
 
   const [userData, setUserData] = useState({
     selectedUser: {},
@@ -53,32 +67,23 @@ function App() {
       }).catch(err => console.log(err));
   }
 
-  useEffect(() => {
-    return () => {
-      setUserData({
-        selectedUser: {},
-        userTodos: [],
-        userAlbums: [],
-        userPosts: []
-      })
-    }
-  }, [])
+  const authorizeUser = (e) => {
+    e.preventDefault();
+    setAuthorization(true);
+  }
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setAuthorization(false);
+  }
 
   return (
     <div className="App">
       <div className="router">
         <Router>
-          <Switch>
-            <Route exact path="/">
-              <Users passStudent={onPassedStudent} />
-            </Route>
-          </Switch>
+          <Route exact path="/" render={props => <Landing {...props} authorizeUser={authorizeUser} />} />
+          <ProtectedRoute exact path="/users" handleLogout={handleLogout} authorization={authorization} passStudent={onPassedStudent} component={Users} />
+          <Route exact path="/unauthorized" component={Unauthorized} />
         </Router>
-      </div>
-      <div className="sidebar">
-        <DataContext.Provider value={userData}>
-          <Sidebar />
-        </DataContext.Provider>
       </div>
     </div>
   );
