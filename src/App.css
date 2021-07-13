@@ -1,12 +1,12 @@
-.App {
+.app {
   padding: 30px 0;
 }
 
-.router, .sidebar {
+.main-area, .sidebar {
   display: inline-block;
   align-items: center;
 }
-.router {
+.main-area {
   float: left;
   width: calc(100% - 400px);
   height: 100vh;

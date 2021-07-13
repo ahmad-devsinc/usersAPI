@@ -65,8 +65,8 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <div className="router">
+    <div className="app">
+      <div className="main-area">
         <Router>
           <Switch>
             <Route exact path="/">

@@ -20,7 +20,7 @@ const Users = (props) => {
         props.passStudent(userEvent);
     }
     return (
-        <div className="Users">
+        <div className="users">
             {users.map(user => {
                 return (
                     <UserContext.Provider key={user.id} value={user}>

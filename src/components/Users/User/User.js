@@ -9,31 +9,31 @@ const User = (props) => {
         props.selectedUser(user);
     }
     return (
-        <div className="User">
+        <div className="user">
             <div className="card" onClick={()=>selectUser(userContext)}>
-                <div className="card__head">
+                <div className="card-head">
                     <span className="username">{userContext.username}</span>
                     <span className="detail-icon"></span>
                 </div>
-                <div className="card__body">
+                <div className="card-body">
                     <div className="details">
                         <div className="item">
-                            <span className="item__s">Full name:</span>&nbsp;<span className="item__m">{userContext.name}</span>
+                            <span className="item-s">Full name:</span>&nbsp;<span className="item-m">{userContext.name}</span>
                         </div>
                         <div className="item">
-                            <span className="item__s">Email:</span>&nbsp;<span className="item__m">{userContext.email}</span>
+                            <span className="item-s">Email:</span>&nbsp;<span className="item-m">{userContext.email}</span>
                         </div>
                         <div className="item">
-                            <span className="item__s">Phone:</span>&nbsp;<span className="item__m">{userContext.phone}</span>
+                            <span className="item-s">Phone:</span>&nbsp;<span className="item-m">{userContext.phone}</span>
                         </div>
                         <div className="item">
-                            <span className="item__s">Website:</span>&nbsp;<span className="item__m">{userContext.website}</span>
+                            <span className="item-s">Website:</span>&nbsp;<span className="item-m">{userContext.website}</span>
                         </div>
                         <div className="item">
-                            <span className="item__s">Address:</span>&nbsp;<span className="item__m">{userContext.address.street}, {userContext.address.suite}, {userContext.address.city}</span>
+                            <span className="item-s">Address:</span>&nbsp;<span className="item-m">{userContext.address.street}, {userContext.address.suite}, {userContext.address.city}</span>
                         </div>
                         <div className="item">
-                            <span className="item__s">Company:</span>&nbsp;
+                            <span className="item-s">Company:</span>&nbsp;
                             <span className="company-item">
                                 <span>{userContext.company.name}</span>
                                 <span className="f-small">({userContext.company.catchPhrase})</span>

@@ -1,4 +1,4 @@
-.User {
+.user {
     width: 310px;
     height: 320px;
 }
@@ -12,18 +12,18 @@
     box-shadow: 0px 2px 6px 0px #5e5e5e;
     cursor: pointer;
 }
-.card__head {
+.card-head {
     height: 35px;
     display: inline-flex;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
-.card__body {
+.card-body {
     height: calc(100% - 55px);
 }
 
-.card__body .details {
+.card-body .details {
     height: 100%;
     display: inline-flex;
     flex-direction: column;
@@ -31,11 +31,11 @@
     padding: 10px;
 }
 
-.item__s {
+.item-s {
     font-size: 12px;
     font-weight: 600;
 }
 
-.item__m {
+.item-m {
     font-size: 14px;
 }
